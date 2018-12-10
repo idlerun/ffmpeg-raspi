@@ -1,7 +1,10 @@
 #!/bin/bash -e
 cd $(dirname $0)
-rm -rf bin
-mkdir -p bin
-docker build -t build-ffmpeg-raspi .
+docker build -t build-ffmpeg-raspi -f Dockerfile /opt/vc
 # extract the built ffmpeg
-docker run -v $(pwd)/bin:/mnt --rm build-ffmpeg-raspi bash -c 'cp -R -v /out_bin/* /mnt/'
+
+docker rm -f tmp &>/dev/null || true
+docker create --user $(id -u):$(id -g) --name tmp build-ffmpeg-raspi
+rm -rf bin
+docker cp tmp:/out_bin bin
+docker rm -f tmp

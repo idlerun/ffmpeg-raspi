@@ -2,7 +2,7 @@
 page: https://idle.run/ffmpeg-raspi
 title: "FFmpeg build for Raspberry Pi"
 tags: ffmpeg raspberry pi
-date: 2018-05-26
+date: 2018-11-09
 ---
 
 ## Overview
@@ -24,6 +24,6 @@ Download or checkout this repo
 
 ## Usage
 
-Run `build-ffmpeg.sh`. Expect it to take a very long time (several hours) as it has a lot of work to do.
+Run `build.sh`. Expect it to take a very long time (several hours) as it has a lot of work to do.
 
 It will create a Docker image named `build-ffmpeg-raspi` which contains all source and the compiled ffmpeg. Then it runs a container with that image to pull out the `ffmpeg` binaries to the host.
